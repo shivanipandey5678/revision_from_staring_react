@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    // react is a js library which can make our website more smooth make code more readable and promotes code reusability.manage complex ui easily take less time in reload
+    //reactDOM is a library which helps in conversion of object form of virtuaal DOM element into real DOM element and render helps in rendering or diplaying it as UI.
+
+    //react use a virtual DOM when the state of react component change it compare it with real DOM and only update the changed part.
+    //Traditional DOM manipulation directly updates the real DOM whenever a change occurs
+   let element=React.createElement("p",null,"Seize the day");
+   let root=ReactDOM.createRoot(document.getElementById("root"));
+   root.render(element);
+   
+  </script>
+</html>

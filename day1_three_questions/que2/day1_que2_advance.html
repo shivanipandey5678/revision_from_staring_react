@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+        let flag=false;
+        let innertext_p_first="Seize the day";
+        let innertext_p_Second="Not Seize the day";
+        
+        let catching_root=document.getElementById("root");
+        let main_root=ReactDOM.createRoot(catching_root);
+        if(flag){
+            let element=(
+            <>
+            <p>{innertext_p_first}</p>
+            </>
+        );//when flag is true its render this innertext_p_first variable
+            main_root.render(element);
+        }else{
+            let element=(
+            <>
+            <p>{innertext_p_Second}</p>
+            </>
+        );
+        main_root.render(element);
+        }
+        //when flag is false
+        
+
+      // Your JSX code here
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      let innertext_p_first="Seize the day";//declare variable
+      let catching_root=document.getElementById("root");//catching root element
+      let main_root=ReactDOM.createRoot(catching_root);//creating root of react where we have to render our ui.
+      let element=(
+            <>
+            <p>{innertext_p_first}</p>
+            </>
+      )//dynamic variable inside react fragment
+      main_root.render(element);
+      //rendering ui
+    </script>
+  </body>
+</html>
