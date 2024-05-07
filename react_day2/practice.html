@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    //first
+//    function LightBulb(props){
+//      const styles={
+//         fontSize:"48px",
+//         color:"pink",
+//         padding:"20px",
+//         border:"1px solid black"
+
+//      }
+//      return <div style={styles}>Bulb is {(props.on)?"On":"Off"}</div>
+//    }
+
+//    let element=(
+//     <>
+//        <LightBulb on={false}/>
+//     </>
+//    )
+
+//second
+
+   function SuperheroDetails({name, hobbies, hasSuperPowers, address, age}){
+      return(
+        <div>
+            <p>Name:{name}</p>
+             {hobbies.length>0?( <p>Hobbies: {hobbies.join(", ")}</p>):(<p>No hobbies</p>)}
+             <p><span>hasSuperPowers:{hasSuperPowers?c</span></p>
+        </div>
+      )
+
+
+   }
+   let element=(
+    <>
+       <SuperheroDetails name="shivani" hobbies={["coding", "photography", "dancing", "editing"]} hasSuperPowers={true}  address="E-12 e.v.n" age={21} />
+    </>
+   )
+
+
+   
+
+    let Root=ReactDOM.createRoot(document.getElementById("root"));
+    Root.render(element);
+  </script>
+</body>
+</html>
