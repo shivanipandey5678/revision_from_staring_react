@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <h2>Quiz</h2>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    
+     function Quiz({que,option1,option2,option3}){
+      {question.qu
+      question.addEventListener(function(e){
+       console.log(e)
+     })}
+        return(
+            <>
+                
+                <p class="question">{que}</p>
+                <input type="radio" value={option1} name={que} id="option1" />
+                <label htmlFor="option1">{option1}</label>
+                <input type="radio" value={option2} name={que} id="option2"/>
+                <label htmlFor="option2">{option2}</label>
+                <input type="radio" value={option3} name={que} id="option3"/>
+                <label htmlFor="option3">{option3}</label>
+           </>
+        )
+     }
+     function App(){
+      let [ans,setAns]=React.useState([])
+        return(
+            <>
+            <Quiz que="2/0?"  option1={3}  option2={0} option3="Not defined"/>
+            <Quiz que="2+2?"  option1={4}  option2={2} option3={7}/>
+            <Quiz que="2-2?"  option1={3}  option2={0} option3={1}/>
+            </>
+        )
+     }
+
+    
+
+
+    let root=document.getElementById("root");
+    let mainRoot=ReactDOM.createRoot(root)
+    mainRoot.render(<App />)
+  </script>
+</html> 
