@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        #previewColorDiv{
+            height: 130px;
+            width: 130px;
+          
+            margin-top: 30px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            border-radius: 5px;
+        }
+        input{
+            width: 17%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+   function App(){
+    let [name,setName]=React.useState("#");
+    // console.log(name)
+    // console.log(name.length,"len")
+    let previewStyle={backgroundColor:name}
+
+    function handleChange(e){
+      let value=(e.target.value)
+      if(value.length<=7){
+        setName(value);
+      }
+     if(value.length===7){
+      // console.log(name.length,"lenINSIDE")
+      // console.log(name,"inside")
+      // console.log("enterd")
+       for(let i=1;i<name.length;i++){
+        if (!(((name[i] >="A" && name[i] <="F") || (name[i] >= "a" && name[i] <= "f"))|| (name[i]>=0 && name[i]<=9))){       
+          let input=document.getElementById("input");
+          input.style.border="2px solid red";
+          alert("wrong input");
+          setName("#");
+          setPreviewStyle({ backgroundColor: "white" ,border:"2px solid red"});
+          break;
+        
+       }
+      
+       }
+       }
+     
+   
+    }
+
+    return(
+        <div>
+            <input type="type" id="input" placeholder="Enter HEX color values e.g #FFFFFF" onChange={handleChange} value={name} maxLength="7"/>
+            <div id="previewColorDiv" style={previewStyle}></div>
+        </div>
+    )
+   
+   }
+  
+
+
+let root = document.getElementById("root");
+let mainRoot = ReactDOM.createRoot(root);
+mainRoot.render(<App />);
+
+  </script>
+</html>
