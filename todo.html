@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create UI With React API</title>
+    <style>
+      #filtertodo,#AddToDoInput{
+        background-color: rgb(61, 61, 170);
+        color: white;
+        border-radius: 5px;
+        padding: 5px;
+        border: none;
+      }
+      #AddToDoInput{
+        padding: 6px 12px;
+        border: none;
+      }
+      body{
+        background-color: #474444;
+      }
+      #width{
+        width: 15%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        margin: 5px auto;
+      }
+      .input_hobby{
+        border:2px solid  red ;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      #root{
+ 
+        height: 100vh;
+      }
+      #returning{
+        width: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        
+        background-color: rgb(229, 61, 61);
+        color: white;
+        margin: 5px auto;
+      }
+    </style>
+   
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+   
+
+    function ToDo(){
+        let [todos,setTodos]=React.useState([]);
+         let [filtertodo,setFilterToDo]=React.useState('all');
+        let [newtodo,setNewTodo]=React.useState("");
+        function AddToDo(){
+            setTodos([...todos,{id:Date.now(),task:newtodo,completion:false}])
+            setNewTodo("")
+      
+        }
+        function DeleteToDo(id){
+          setTodos(todos.filter(function(e){
+           return e.id!=id;
+          }))
+        }
+
+        function Toggle(id){
+          setTodos(todos.map((todo)=>{
+            return todo.id===id?{...todo,completion: !todo.completion}:todo;
+          }))
+        }
+
+
+        function sort_data(e){
+          setFilterToDo(e.target.value);
+        }
+        function filtertodofunt() { 
+        if (filtertodo === "Active") {
+          return todos.filter(todo => !todo.completion);
+        } else if (filtertodo === "Completed") {
+          return todos.filter(todo => todo.completion);
+        }
+        return todos; 
+      }
+
+    
+  
+        
+     
+
+        return(
+          <>
+            <div id="width">
+                <select onChange={sort_data} id="filtertodo">
+                  <option value="all">All</option>
+                  <option value="Active">Active</option>
+                  <option value="Completed">Completed</option>
+                 
+                </select>
+                <input type="text" className="input_hobby"placeholder="Enter your hobby here "value={newtodo} onChange={(e)=>{setNewTodo(e.target.value)}}/>
+                <button onClick={AddToDo} id="AddToDoInput">Add todo</button>
+            
+               
+                <div id="returning">
+                    {filtertodofunt().map(function(e){
+                    
+                    return <tr key={e.id}>
+                      <td><input type="checkbox" checked={e.completion} onChange={()=>{Toggle(e.id)}}/></td>
+                      <td><span>{e.task}</span></td>
+                      <td><button onClick={()=>{DeleteToDo(e.id)}}>Delete</button></td>
+                    </tr>
+                })}
+              </div>
+               
+             
+            </div>
+            </>
+        )
+    }
+  
+
+
+
+    let root=document.getElementById("root");
+    let mainRoot=ReactDOM.createRoot(root)
+    mainRoot.render(<ToDo />)
+  </script>
+</html>
