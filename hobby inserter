@@ -1,0 +1,86 @@
+     
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shibu</title>
+    <style>
+     .inputhobby{
+       border:2px solid  #008080  ;
+       padding: 10px;
+       border-radius: 4px;
+     }
+     .btn{
+      background-color: #FF7F50;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    let key=0;
+    function App(){
+     let [row,setRow]=React.useState([]);
+   
+     let [newhobby,setNewHobby]=React.useState("");
+     let [hobby,setHobby]=React.useState([]);
+
+     function MakeRow(id){
+      
+       function removeHobby(id) {
+      setRow(row.filter((item) => item.id !== id));
+    }
+      
+      return(
+        <div id={id}>
+          
+          <input type="text"className="inputhobby" onChange={(e)=>{setNewHobby(e.target.value)}}/>
+          <button className="btn" onClick={()=>{removeHobby(id)}}>Remove</button>
+        </div>
+      )
+     }
+
+     function AddRow(){
+     const NewId={id:Date.now(),};
+      return setRow([...row,NewId ])
+     }
+     function consolehoobies(){
+        console.log(row)
+     }
+
+     
+     return(
+      <>
+        <input type="text"
+         placeholder="Enter hobby" 
+         className="inputhobby" 
+         onChange={(e)=>{setNewHobby(e.target.value)}}/>
+
+
+        <button onClick={AddRow} className="btn">Add More</button>
+
+
+        <ol>
+          {
+          row.map((e)=>{
+            return <li key={e.id}>{MakeRow(e.id)}</li>
+          })
+          }
+        </ol>
+        <button onClick={consolehoobies}  className="btn">Submit</button>
+      </>
+     )
+    }
+    let root=document.getElementById("root");
+    let mainRoot=ReactDOM.createRoot(root)
+    mainRoot.render(<App />)
+  </script>
+</html>
