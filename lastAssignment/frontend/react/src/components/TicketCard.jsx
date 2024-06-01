@@ -1,7 +1,9 @@
-import { Card, CardHeader, CardBody, Heading,Text,Box,Stack,StackDivider, } from '@chakra-ui/react';
-export default function TicketCards({Title,Status,Priority}){
+import { Card, CardHeader, CardBody, Heading,Text,Box,Stack,StackDivider,CardFooter,Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+export default function TicketCards({id,title,status,priority}){
+    let navigate=useNavigate();
     return(
-        <Card>
+        <Card m={6}>
         <CardHeader>
             <Heading size='md'>Ticket</Heading>
         </CardHeader>
@@ -13,7 +15,7 @@ export default function TicketCards({Title,Status,Priority}){
                Title
                 </Heading>
                 <Text pt='2' fontSize='sm'>
-               {Title}
+               {title}
                 </Text>
             </Box>
             <Box>
@@ -21,7 +23,7 @@ export default function TicketCards({Title,Status,Priority}){
                 Status
                 </Heading>
                 <Text pt='2' fontSize='sm'>
-               {Status}
+               {status}
                 </Text>
             </Box>
             <Box>
@@ -29,11 +31,14 @@ export default function TicketCards({Title,Status,Priority}){
                 Priority
                 </Heading>
                 <Text pt='2' fontSize='sm'>
-               {Priority}
+               {priority}
                 </Text>
             </Box>
             </Stack>
         </CardBody>
+        <CardFooter>
+            <Button colorScheme='blue' onClick={()=>{navigate(`/ticket/view/${id}`)}}>View ticket</Button>
+        </CardFooter>
         </Card>
             )
         }
