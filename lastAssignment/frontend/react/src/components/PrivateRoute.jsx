@@ -6,8 +6,8 @@ import {Navigate} from 'react-router-dom'
 
 export default function PrivateRoute({children}){
 
-    let islogin=useContext(AuthContext);
-    if(!islogin){
+    let {authDetails:{isLogin}}=useContext(AuthContext);
+    if(!isLogin){
         return <Navigate to="/login"/>
     }
   return children

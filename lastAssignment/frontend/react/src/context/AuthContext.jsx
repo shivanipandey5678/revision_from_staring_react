@@ -4,7 +4,7 @@ export let AuthContext=createContext();
 
 export default function AuthContextProvider({children}){
     let [authDetails,setAuthDetails]=useState({
-        isLogin:false,
+        isLogin:true,
         token:null,
     })
     function logout(){
